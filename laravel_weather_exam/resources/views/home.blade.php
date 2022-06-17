@@ -20,8 +20,10 @@
             </ul>
         </div>
     </nav>
+
     <div class="row-flex">
         <form method="POST" action=" {{route('save')}} " <div class="row-flex">
+
             <input type="hidden" name="temperature" value="{{$weather->main->temp}}" />
             <input type="hidden" name="city" value="{{$weather->name}}" />
             <input type="hidden" name="feels" value="{{$weather->main->feels_like}}" />

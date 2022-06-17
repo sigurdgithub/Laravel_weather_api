@@ -15,7 +15,7 @@ class WeatherdataController extends Controller
     public function save(Request $request)
     {
         $wt = new Weather();
-        $genk_weather = $wt->getCurrentByCity('genk');
+        $genk_weather = $wt->getCurrentByCity('westerlo');
 
         $request->validate([
             'city' => ['required', 'string'],
@@ -32,5 +32,6 @@ class WeatherdataController extends Controller
 
         ]);
         //dd($weather);
+        return redirect('/')->with('status', 'Weather Data saved!');
     }
 }
