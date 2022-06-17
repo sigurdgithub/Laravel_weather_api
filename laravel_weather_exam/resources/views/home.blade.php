@@ -6,12 +6,11 @@
     </div>
     <form method="POST" action="{{-- {{route('save')}} --}}" <div class="row-flex">
         @isset($weather)
-
-        {{$weather->main->temp}}
-        <hr>
-        {{$weather->main->temp}}
-</div>
-@endisset($weather)
-<button type="submit" class="btn btn-primary">Save</button>
-</form>
+        <div class="col" {{$weather->main->temp}}
+            <hr>
+            {{$weather->main->temp}}
+        </div>
+        @endisset($weather)
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
 </div>
