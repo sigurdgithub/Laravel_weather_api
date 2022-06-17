@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use RakibDevs\Weather\Weather;
+use App\Http\Controllers\WeatherdataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,4 @@ Route::get('/', function () {
     return view('home', ['weather' => $genk_weather]);
 });
 
-Route::post('save', function () {
-});
+Route::post('', [WeatherdataController::class, 'save'])->name('save');
