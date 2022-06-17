@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use RakibDevs\Weather\Weather;
 use App\Http\Controllers\WeatherdataController;
+use App\Http\Models\Weatherdata;
+use App\Models\Weatherdata as ModelsWeatherdata;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +24,17 @@ Route::get('/', function () {
 });
 
 Route::get('/weather', function () {
-    return view('weather');
+    return view('weather', [
+        'weather_data' => ModelsWeatherdata::all()
+    ]);;
 });
 
 Route::get('/', function () {
-    /*  $weather_genk = Http::get('https://api.openweathermap.org/data/2.5/weather?appid=5dd765a29b95b2e058dfd9f33a1dbd0d&q=genk');
-    $weather_genk = json_decode($weather_genk); */
     $wt = new Weather();
     $genk_weather = $wt->getCurrentByCity('genk');
-    dd($genk_weather);
     return view('home', ['weather' => $genk_weather]);
 });
 
 Route::post('', [WeatherdataController::class, 'save'])->name('save');
+
+Route::get('/weather', [WeatherdataController::class, 'calcAverage'])->name('calcAverage');

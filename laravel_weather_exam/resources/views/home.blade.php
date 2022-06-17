@@ -15,35 +15,65 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/weather">Weather</a>
+                    <a class="nav-link" href="{{route ('calcAverage')}}">Weather</a>
                 </li>
             </ul>
         </div>
     </nav>
 
+
     <div class="row-flex">
         <form method="POST" action=" {{route('save')}} " <div class="row-flex">
-
+            @csrf
             <input type="hidden" name="temperature" value="{{$weather->main->temp}}" />
             <input type="hidden" name="city" value="{{$weather->name}}" />
             <input type="hidden" name="feels" value="{{$weather->main->feels_like}}" />
             <input type="hidden" name="humidity" value="{{$weather->main->humidity}}" />
-            @csrf
             @isset($weather)
-            <h3>Weer in {{$weather->name}}</h3>
-            <h4>Vandaag</h4>
-            <div class="col-2">
+            <section class="vh-100" style="background-color: #4B515D;">
+                <div class="container py-5 h-100">
 
-                <p>Temperatuur: {{$weather->main->temp}}°C</p>
-                <p>Voelt aan als: {{$weather->main->feels_like}}°C</p>
-            </div>
-            <div class="col-2">
-                <p>Vochtigheid: {{$weather->main->humidity}}%</p>
-            </div>
-            @endisset($weather)
-            <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-md-8 col-lg-6 col-xl-4">
+
+                            <div class="card" style="color: #4B515D; border-radius: 35px;">
+                                <div class="card-body p-4">
+
+                                    <div class="d-flex">
+                                        <h6 class="flex-grow-1">{{$weather->name}}</h6>
+                                        <h6>Vandaag</h6>
+                                    </div>
+
+                                    <div class="d-flex flex-column text-center mt-5 mb-4">
+                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;">
+                                            {{$weather->main->temp}}°C </h6>
+                                        <span class="small" style="color: #868B94">Voelt aan als:
+                                            {{$weather->main->feels_like}}°C</span>
+                                    </div>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1" style="font-size: 1rem;">
+                                            <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span
+                                                    class="ms-1"> {{$weather->main->humidity}}% </span>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            @endisset($weather)
         </form>
     </div>
+    <div>
+    </div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">

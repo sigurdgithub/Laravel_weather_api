@@ -13,7 +13,7 @@
                 <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/weather">Weather (current)</a>
+                <a class="nav-link" href="{{route ('calcAverage')}}">Weather (current)</a>
             </li>
         </ul>
     </div>
@@ -29,25 +29,38 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($weather_data as $weather)
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">{{$weather->id}}</th>
+            <td>{{$weather->city}}</td>
+            <td>{{$weather->temperature}}°C</td>
+            <td>{{$weather->feels}}°C</td>
+            <td>{{$weather->humidity}}%</td>
         </tr>
+        @endforeach
+    </tbody>
+</table>
+<table class="table">
+
+    <thead>
         <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Gemiddelde Temperatuur</th>
+            <th scope="col">Gemiddelde Gevoelstemperatuur</th>
+            <th scope="col">Gemiddelde Vochtigheid</th>
         </tr>
+    </thead>
+    <tbody>
         <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <th scope="row"></th>
+            <td></td>
+            <td>{{$avg_temp}}°C</td>
+            <td>{{$avg_feels}}°C</td>
+            <td>{{$avg_hum}}%</td>
         </tr>
     </tbody>
 </table>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+</ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
 </script>
