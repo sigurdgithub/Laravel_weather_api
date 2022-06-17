@@ -4,15 +4,14 @@
             <h1>HOME PAGE</h1>
         </div>
     </div>
-    <form method="POST" action="{{route('save')}}" <div class="row-flex">
-        @isset($weather_genk)
-        @foreach ($weather_genk as $weather_gen)
-        {{$weather_gen->weather}}
+    <form method="POST" action="{{-- {{route('save')}} --}}" <div class="row-flex">
+        @isset($weather)
+
+        {{$weather->main->temp}}
         <hr>
-        {{$weather_gen->main}}
+        {{$weather->main->temp}}
 </div>
-@endforeach
-@endisset($weather_genk)
+@endisset($weather)
 <button type="submit" class="btn btn-primary">Save</button>
 </form>
 </div>

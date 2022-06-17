@@ -29,6 +29,9 @@ Route::get('/', function () {
     $weather_genk = json_decode($weather_genk); */
     $wt = new Weather();
     $genk_weather = $wt->getCurrentByCity('genk');
-    $genk_weather = json_decode($genk_weather);
-    return view('home', [$genk_weather]);
+    //dd($genk_weather);
+    return view('home', ['weather' => $genk_weather]);
+});
+
+Route::post('save', function () {
 });
